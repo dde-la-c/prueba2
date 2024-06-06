@@ -3,14 +3,16 @@ workflows:
     name: iOS Workflow
     max_build_duration: 60
     environment:
+      flutter: stable
       vars:
-        FLUTTER_VERSION: stable
+        FLUTTER_VERSION: "3.4.1"  # Asegúrate de que esta es la versión correcta que contiene Dart >= 3.4.1
     triggering:
       events:
         - push
     scripts:
       - name: Install dependencies
         script: |
+          flutter --version
           flutter packages get
       - name: Build iOS
         script: |
