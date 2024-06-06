@@ -1,0 +1,21 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    max_build_duration: 60
+    environment:
+      vars:
+        FLUTTER_VERSION: stable
+    triggering:
+      events:
+        - push
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter packages get
+      - name: Build iOS
+        script: |
+          flutter build ios --release
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
